@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+  <title>Ruby Project | <%= yield(:title)%></title>
+  <h3>Ruby Project | <%= yield(:title)%></h3>
+	<!--the above statement relies on the definition of a page title-->   
+   <!--
+   Let's talk about the above statement yield brings
+   in hash title from the current page relies on the definition of the page title
+   -->
+  
+  
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!-- links the css file /app/assets/stylesheets/application.css to -->
+
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+
+  
+</head>
+<body>
+
+<h2><%= full_title(yield(:title))%></h2>
+  <%= render 'layouts/header' %>
+<div class="container">
+<%= yield %>
+<!-- yield allows data from generated ruby code-->
+<%= render 'layouts/footer' %>
+<!-- add footer to main page from layouts folder-->
+<%= debug(params) if Rails.env.development? %>
+<!-- debugging-->
+</div>
+
+
+
+
+<!-- Lets us bring in all the pages-->
+
+</body>
+</html>
